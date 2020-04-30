@@ -22,6 +22,9 @@ This plugin uses:
 
 Do not forget to remove any other mapchooser from your active plugins directory
 
+## Known bugs
+None, please use the "Issues" tab if you find any
+
 ## TODO
 - Add tiers to the !nominate menu
 - Add a completion marker using KZTimerGlobal.com's players API

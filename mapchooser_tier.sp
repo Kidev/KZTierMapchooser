@@ -113,6 +113,8 @@ int g_winCount[MAXTEAMS];
 #include <SteamWorks>
 #include <smjansson>
 
+#pragma dynamic 131072
+
 #define SECURE "https://"
 #define API_MAP "kztimerglobal.com/api/v1/maps"
 #define TIERS_NO 7
