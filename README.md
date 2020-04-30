@@ -4,6 +4,9 @@ This is a modification of SourceMod's mapchooser, adding the tiers of maps in th
 ## Screenshots
 ![alt text](https://github.com/Kidev/KZTierMapchooser/raw/master/screenshots/votemap.jpg "Vote menu with tiers")
 
+## Download
+You can download the compiled plugin from [here](https://raw.githubusercontent.com/Kidev/KZTierMapchooser/master/compiled/mapchooser_tier.smx)
+
 ## Dependencies
 This plugin uses:
 - SourceMod 1.10.0
