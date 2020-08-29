@@ -117,7 +117,7 @@ int g_winCount[MAXTEAMS];
 
 #define SECURE "https://"
 #define API_MAP "kztimerglobal.com/api/v1/maps"
-#define TIERS_NO 7
+#define TIERS_NO 8
 
 // Lists of tiers, each cell is mapped to the same id as 'g_NextMapList' and 'g_NominateList'
 ArrayList g_NominatedMapListTiers;
@@ -133,6 +133,7 @@ char gC_TierPhrases[TIERS_NO + 1][] =
 	"Medium",
 	"Hard",
 	"Very Hard",
+	"Extreme",
 	"Death"
 };
 
