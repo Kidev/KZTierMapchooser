@@ -104,6 +104,8 @@ GlobalForward g_MapVoteStartedForward;
 #define MAXTEAMS 10
 int g_winCount[MAXTEAMS];
 
+#define VOTE_WARNING1 "##votewarning1##"
+#define VOTE_WARNING2 "##votewarning2##"
 #define VOTE_EXTEND "##extend##"
 #define VOTE_DONTCHANGE "##dontchange##"
 
@@ -790,6 +792,10 @@ void InitiateVote(MapChange when, ArrayList inputlist=null)
 
 	char map[PLATFORM_MAX_PATH];
 
+	/*Warning message */
+	g_VoteMenu.AddItem(VOTE_WARNING1, "Please don't vote mindlessly...");
+	g_VoteMenu.AddItem(VOTE_WARNING2, "...choose a map you want to play.");
+
 	/* No input given - User our internal nominations and maplist */
 	if (inputlist == null)
 	{
@@ -919,6 +925,8 @@ void InitiateVote(MapChange when, ArrayList inputlist=null)
 
 	// Remove to allow the exit button to the menu
 	g_VoteMenu.ExitButton = false;
+	g_VoteMenu.NoVoteButton = true;
+	g_VoteMenu.Pagination = false;
 	g_VoteMenu.DisplayVoteToAll(voteDuration);
 
 	LogAction(-1, -1, "Voting for next map has started.");
@@ -1084,6 +1092,25 @@ public int Handler_MapVoteMenu(Menu menu, MenuAction action, int param1, int par
 
 			Panel panel = view_as<Panel>(param2);
 			panel.SetTitle(buffer);
+		}
+
+		case MenuAction_DrawItem:
+		{
+			int style;
+			char info[32];
+			menu.GetItem(param2, info, sizeof(info), style);
+		
+			if (StrEqual(info, VOTE_WARNING1))
+			{
+				return ITEMDRAW_DISABLED;
+			} else if (StrEqual(info, VOTE_WARNING2))
+			{
+				return ITEMDRAW_DISABLED;
+			}
+			else
+			{
+				return style;
+			}
 		}
 
 		case MenuAction_DisplayItem:
