@@ -295,7 +295,7 @@ public int OnMapInfo_Data(const char[] data)
 
 public void OnPluginStart()
 {
-	LoadTranslations("mapchooser.phrases");
+	LoadTranslations("mapchooser_tier.phrases");
 	LoadTranslations("common.phrases");
 
 	int arraySize = ByteCountToCells(PLATFORM_MAX_PATH);
@@ -1115,10 +1115,10 @@ public int Handler_MapVoteMenu(Menu menu, MenuAction action, int param1, int par
 
 		case MenuAction_DisplayItem:
 		{
+			char map[PLATFORM_MAX_PATH], buffer[255];
+			menu.GetItem(param2, map, sizeof(map));
 			if (menu.ItemCount - 1 == param2)
 			{
-				char map[PLATFORM_MAX_PATH], buffer[255];
-				menu.GetItem(param2, map, sizeof(map));
 				if (strcmp(map, VOTE_EXTEND, false) == 0)
 				{
 					Format(buffer, sizeof(buffer), "%T", "Extend Map", param1);
@@ -1129,6 +1129,16 @@ public int Handler_MapVoteMenu(Menu menu, MenuAction action, int param1, int par
 					Format(buffer, sizeof(buffer), "%T", "Dont Change", param1);
 					return RedrawMenuItem(buffer);
 				}
+			}
+			else if (strcmp(map, VOTE_WARNING1, false) == 0)
+			{
+				Format(buffer, sizeof(buffer), "%T", "Vote Warning 1", param1);
+				return RedrawMenuItem(buffer);
+			}
+			else if (strcmp(map, VOTE_WARNING2, false) == 0)
+			{
+				Format(buffer, sizeof(buffer), "%T", "Vote Warning 2", param1);
+				return RedrawMenuItem(buffer);
 			}
 		}
 
